@@ -1,0 +1,24 @@
+name: jphp-dffi-ext
+version: 1.0.0
+description: DevelNext Foreign Function Interface
+
+plugins:
+- Hub
+- Gradle
+- Doc
+
+deps:
+  jphp-runtime: '*'
+  jphp-zend-ext: '*'
+  
+sources:
+- src
+
+hub:
+  login: dragon.warri0r@yandex.com
+
+gradle:
+  deps:
+  - net.java.dev.jna:jna:4.5.0
+  
+ignore: ['/.git/**', '/package.hub.yml']
