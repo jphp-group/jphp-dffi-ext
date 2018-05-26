@@ -11,9 +11,10 @@ Class DFFIReferenceValue
 
 #### Methods
 
-- `->`[`__construct()`](#method-__construct) - _DFFIReferenceValue constructor._
+- `->`[`__construct()`](#method-__construct) - _Конструктор с выделением памяти_
 - `->`[`setValue()`](#method-setvalue)
 - `->`[`getValue()`](#method-getvalue)
+- `->`[`getNativeString()`](#method-getnativestring)
 
 ---
 # Methods
@@ -22,9 +23,9 @@ Class DFFIReferenceValue
 
 ### __construct()
 ```php
-__construct(string $type, string $value): void
+__construct(string $type, int $size): void
 ```
-DFFIReferenceValue constructor.
+Конструктор с выделением памяти
 
 ---
 
@@ -42,4 +43,13 @@ setValue(string $value): void
 ### getValue()
 ```php
 getValue(): any
+```
+
+---
+
+<a name="method-getnativestring"></a>
+
+### getNativeString()
+```php
+getNativeString(): string
 ```

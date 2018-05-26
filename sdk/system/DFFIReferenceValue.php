@@ -24,6 +24,15 @@ class DFFIReferenceValue
 	public function __construct($type, $value)
     {
     }
+    
+    /**
+	 * Конструктор с выделением памяти
+     * @param string $type
+     * @param int $size
+     */
+	public function __construct($type, $size)
+    {
+    }
 
     /**
 	 * @param string $value
@@ -37,6 +46,13 @@ class DFFIReferenceValue
      * @return any
      */
     public function getValue()
+    {
+    }
+    
+    /**
+     * @return string
+     */
+    public function getNativeString()
     {
     }
 }
