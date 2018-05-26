@@ -21,4 +21,8 @@ gradle:
   deps:
   - net.java.dev.jna:jna:4.5.0
   
-ignore: ['/.git/**', '/build/*', '/jars/*', '/vendor/*', '/package.hub.yml']
+
+config:
+  ignore:
+  - /.git/**
+  - /package.hub.yml

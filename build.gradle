@@ -22,7 +22,7 @@ sourceSets { main { compileClasspath += configurations.provided } }
 
 dependencies {
   provided files('jars/x-jna-4.5.0.jar')
-  provided files('jars/x-jphp-dffi-ext-1.0.0.jar')
+  provided files('jars/x-jphp-dffi-ext-1.0.1.jar')
   provided files('vendor/jphp-runtime/jars/jphp-runtime-0.9.3-SNAPSHOT.jar',
  'vendor/jphp-zend-ext/jars/gson-2.7.jar',
  'vendor/jphp-zend-ext/jars/jphp-zend-ext-0.9.3-SNAPSHOT.jar',
