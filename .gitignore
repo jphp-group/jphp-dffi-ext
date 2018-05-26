@@ -1,1 +1,4 @@
-package.hub.yml
+/package.hub.yml
+/build/*
+/jars/*
+/vendor/*
