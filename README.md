@@ -17,4 +17,7 @@ DFFI::MessageBoxA(0, "Hello", "HelloWorld", 0);
 ```
 
 ## API Documentation
-[api-docs](api-docs/).
+[api-docs](api-docs/)
+
+## Bundle for develnext
+[Download](https://github.com/jphp-group/jphp-dffi-ext/releases/download/1.0.0/dn-dffi-bundle.dnbundle)
