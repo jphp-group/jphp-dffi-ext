@@ -1,11 +1,11 @@
 ## jphp-dffi-ext
-> version 1.0.0, created by JPPM.
+> version 1.0.1, created by JPPM.
 
 DevelNext Foreign Function Interface
 
 ### Install
 ```
-jppm add jphp-dffi-ext@1.0.0
+jppm add jphp-dffi-ext@1.0.1
 ```
 
 ### API
