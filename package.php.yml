@@ -1,5 +1,5 @@
 name: jphp-dffi-ext
-version: 1.0.0
+version: 1.0.1
 description: DevelNext Foreign Function Interface
 
 plugins:
@@ -10,6 +10,18 @@ plugins:
 deps:
   jphp-runtime: '*'
   jphp-zend-ext: '*'
+  
+devDeps:
+  dn-bundle-plugin: '*'
+  
+develnext-bundle:
+  version: 1.0.1
+  name: DFFI
+  author: HackMemory
+  icon: "develnext/bundle/dffi/icon32.png"
+  description: "DevelNext Foreign Function Interface"
+  group: "system"
+  class: "develnext\\bundle\\dffi\\DFFIBundle"
   
 sources:
 - src
@@ -25,4 +37,7 @@ gradle:
 config:
   ignore:
   - /.git/**
+  - /.idea/**
+  - /*.iml
+  - /bundle/**
   - /package.hub.yml

@@ -4,15 +4,16 @@ import org.develnext.jphp.ext.system.DFFIExtension;
 import php.runtime.Memory;
 import php.runtime.annotation.Reflection;
 import php.runtime.memory.*;
-import php.runtime.memory.helper.*;
 import php.runtime.env.Environment;
 import php.runtime.env.TraceInfo;
 import php.runtime.lang.BaseObject;
-import php.runtime.lang.BaseWrapper;
 import php.runtime.reflection.ClassEntity;
 
+import javafx.stage.Stage;
+import com.sun.javafx.tk.TKStage;
+import java.lang.reflect.Method;
+
 import java.awt.*;
-import java.util.*;
 import com.sun.jna.*;
 
 @Reflection.Name("DFFI")
@@ -88,6 +89,25 @@ public class DFFI extends BaseObject {
 	public static void addSearchPath(String lib, String path) throws AWTException
 	{
 		NativeLibrary.addSearchPath(lib, path);
+	}
+    
+    @Reflection.Signature
+	public static Long getJFXHandle(Object window)
+	{
+		try {
+            Stage stage = (Stage) window;
+
+            TKStage tkStage = stage.impl_getPeer();
+            Method getPlatformWindow = tkStage.getClass().getDeclaredMethod("getPlatformWindow" );
+            getPlatformWindow.setAccessible(true);
+            Object platformWindow = getPlatformWindow.invoke(tkStage);
+            Method getNativeHandle = platformWindow.getClass().getMethod( "getNativeHandle" );
+            getNativeHandle.setAccessible(true);
+            Object nativeHandle = getNativeHandle.invoke(platformWindow);
+            return (Long) nativeHandle;
+        } catch (Throwable e) {
+            return null;
+        }
 	}
 	
 }

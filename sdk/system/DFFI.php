@@ -22,4 +22,19 @@ class DFFI
      * @param array $types
      */
 	public function bind($functionName, $returnType, $types) {}
+    
+    /**
+     * Add library to search path
+     * 
+     * @param string $lib
+     * @param string $path
+     */
+	public function addSearchPath($lib, $path) {}
+    
+    /**
+     * Get JavaFX window handle
+     * 
+     * @param UXForm $form
+     */
+	public function getJFXHandle($form) {}
 }
