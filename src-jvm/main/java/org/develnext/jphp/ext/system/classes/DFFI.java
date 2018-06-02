@@ -52,7 +52,6 @@ public class DFFI extends BaseObject {
 	@Reflection.Signature
 	public static Memory __callStatic(Environment env, TraceInfo trace, String functionName, Memory... args) throws AWTException, Exception
 	{
-        System.out.println(functionName);
 		Memory returnValue = Memory.NULL;
 		Memory _function = functions.valueOfIndex(functionName);
 		if(_function != Memory.UNDEFINED){
@@ -70,7 +69,6 @@ public class DFFI extends BaseObject {
     @Reflection.Signature
 	public Memory __call(Environment env, TraceInfo trace, String functionName, Memory... args) throws AWTException, Exception
 	{
-        System.out.println(functionName);
 		Memory returnValue = Memory.NULL;
 		Memory _function = functions.valueOfIndex(functionName);
 		if(_function != Memory.UNDEFINED){
