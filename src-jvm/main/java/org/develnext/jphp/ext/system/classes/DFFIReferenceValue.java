@@ -5,17 +5,11 @@ import org.develnext.jphp.ext.system.DFFIExtension;
 import php.runtime.annotation.Reflection;
 import php.runtime.annotation.Reflection.Signature;
 import php.runtime.env.Environment;
-import php.runtime.env.TraceInfo;
 import php.runtime.lang.BaseObject;
-import php.runtime.lang.BaseWrapper;
 import php.runtime.reflection.ClassEntity;
-import php.runtime.memory.ArrayMemory;
 
 import com.sun.jna.ptr.*;
 import com.sun.jna.*;
-import java.awt.*;
-import java.util.*;
-import java.lang.reflect.Field;
 
 @Reflection.Name("DFFIReferenceValue")
 @Reflection.Namespace(DFFIExtension.NS)
@@ -48,12 +42,12 @@ public class DFFIReferenceValue extends BaseObject {
     }*/
 	
 	@Signature
-    public void setValue(Environment env, Memory value) throws AWTException {
+    public void setValue(Environment env, Memory value) {
 		this.refval = Helper.SetValueToReference(this.refval, Memory.unwrap(env, value));
 	}
 
     @Signature
-    public Memory getValue() throws AWTException, ClassNotFoundException {
+    public Memory getValue() throws ClassNotFoundException {
         if(this.refval != null){
             return Helper.ConvertObjectToMemory(this.type, Helper.ConvertReferenceToObject(this.refval));
         }

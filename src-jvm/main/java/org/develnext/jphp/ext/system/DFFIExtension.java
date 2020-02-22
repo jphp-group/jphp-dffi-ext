@@ -1,12 +1,8 @@
 package org.develnext.jphp.ext.system;
 
-import org.develnext.jphp.ext.system.classes.DFFI;
-import org.develnext.jphp.ext.system.classes.DFFIType;
-import org.develnext.jphp.ext.system.classes.DFFIStruct;
-import org.develnext.jphp.ext.system.classes.DFFIReferenceValue;
+import org.develnext.jphp.ext.system.classes.*;
 import php.runtime.env.CompileScope;
 import php.runtime.ext.support.Extension;
-import php.runtime.ext.support.Extension.Status;
 
 public class DFFIExtension extends Extension
 {
@@ -30,5 +26,6 @@ public class DFFIExtension extends Extension
     registerClass(scope, DFFIType.class);
     registerClass(scope, DFFIStruct.class);
     registerClass(scope, DFFIReferenceValue.class);
+    registerClass(scope, DFFIConsole.class);
   }
 }

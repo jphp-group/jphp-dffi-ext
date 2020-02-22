@@ -7,10 +7,8 @@ import php.runtime.annotation.Reflection.Signature;
 import php.runtime.env.Environment;
 import php.runtime.env.TraceInfo;
 import php.runtime.lang.BaseObject;
-import php.runtime.lang.BaseWrapper;
 import php.runtime.reflection.ClassEntity;
 import php.runtime.memory.ArrayMemory;
-import php.runtime.lang.ForeachIterator;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -19,9 +17,7 @@ import java.lang.reflect.Field;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.sun.jna.*;
-import java.awt.*;
 import java.util.*;
-import java.lang.reflect.Field;
 
 @Reflection.Name("DFFIStruct")
 @Reflection.Namespace(DFFIExtension.NS)
@@ -46,13 +42,13 @@ public class DFFIStruct extends BaseObject {
     }
 
     @Reflection.Signature
-	public void setValue(Environment env, TraceInfo trace, int index, String valueType, Memory value) throws AWTException, IllegalAccessException
+	public void setValue(Environment env, TraceInfo trace, int index, String valueType, Memory value) throws IllegalAccessException
 	{
 		this.struct.getClass().getDeclaredFields()[index].set(this.struct, Helper.ConvertMemoryToObject(env, valueType, value));
 	}
   
     @Reflection.Signature
-    public ArrayMemory getResponse() throws AWTException, IllegalAccessException
+    public ArrayMemory getResponse() throws IllegalAccessException
     {
 		ArrayMemory fieldsArray = new ArrayMemory();
 		Field[] fields = this.struct.getClass().getDeclaredFields();
