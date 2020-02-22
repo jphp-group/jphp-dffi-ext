@@ -33,7 +33,8 @@ public class DFFIConsole extends BaseObject {
             return isTerm;
         }
 
-        return isTerm = (System.getenv("TERM").equalsIgnoreCase("xterm"));
+        String term = System.getenv("TERM");
+        return isTerm = ("xterm".equalsIgnoreCase(term));
     }
 
     @Signature
@@ -47,13 +48,14 @@ public class DFFIConsole extends BaseObject {
         }
 
         String osName = System.getProperty("os.name");
-        if (osName.equalsIgnoreCase("windows")) {
+        if (osName.toLowerCase().startsWith("windows")) {
             try {
                 float osVersion = Float.parseFloat(System.getProperty("os.version"));
                 if (osVersion >= 10.0f) {
                     return isColorSupport = true;
                 }
             } catch (NumberFormatException e) {
+                System.err.println(e.getMessage());
                 return isColorSupport = false;
             }
         }
@@ -69,7 +71,7 @@ public class DFFIConsole extends BaseObject {
 
         String osName = System.getProperty("os.name");
 
-        if (osName.equalsIgnoreCase("windows")) {
+        if (osName.toLowerCase().startsWith("windows")) {
             try {
                 float osVersion = Float.parseFloat(System.getProperty("os.version"));
                 if (osVersion >= 10.0f) {
@@ -79,6 +81,7 @@ public class DFFIConsole extends BaseObject {
 
                 return isColorSupport = false;
             } catch (NumberFormatException e) {
+                System.err.println(e.getMessage());
                 return isColorSupport = false;
             }
         }
