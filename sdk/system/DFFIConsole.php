@@ -13,7 +13,21 @@ class DFFIConsole
      * Enable colors in console (for Windows)
      * @return bool
      */
-    public function enableColors(): bool
+    public static function enableColors(): bool
+    {
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isXTerm(): bool
+    {
+    }
+
+    /**
+     * @return bool
+     */
+    public static function hasColorSupport(): bool
     {
     }
 }

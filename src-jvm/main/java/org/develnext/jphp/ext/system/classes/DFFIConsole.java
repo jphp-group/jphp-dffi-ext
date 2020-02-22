@@ -24,8 +24,49 @@ public class DFFIConsole extends BaseObject {
         super(env, clazz);
     }
 
+    private static Boolean isTerm = null;
+    private static Boolean isColorSupport = null;
+
     @Signature
-    public boolean enableColors() {
+    public static boolean isXTerm() {
+        if (isTerm != null) {
+            return isTerm;
+        }
+
+        return isTerm = (System.getenv("TERM").equalsIgnoreCase("xterm"));
+    }
+
+    @Signature
+    public static boolean hasColorSupport() {
+        if (isColorSupport != null) {
+            return isColorSupport;
+        }
+
+        if (isXTerm()) {
+            return isColorSupport = true;
+        }
+
+        String osName = System.getProperty("os.name");
+        if (osName.equalsIgnoreCase("windows")) {
+            try {
+                float osVersion = Float.parseFloat(System.getProperty("os.version"));
+                if (osVersion >= 10.0f) {
+                    return isColorSupport = true;
+                }
+            } catch (NumberFormatException e) {
+                return isColorSupport = false;
+            }
+        }
+
+        return isColorSupport = false;
+    }
+
+    @Signature
+    public static boolean enableColors() {
+        if (isXTerm()) {
+            return true;
+        }
+
         String osName = System.getProperty("os.name");
 
         if (osName.equalsIgnoreCase("windows")) {
@@ -36,16 +77,16 @@ public class DFFIConsole extends BaseObject {
                     return true;
                 }
 
-                return false;
+                return isColorSupport = false;
             } catch (NumberFormatException e) {
-                return false;
+                return isColorSupport = false;
             }
         }
 
         return true;
     }
 
-    protected void enableColorsForWindows() {
+    protected static void enableColorsForWindows() {
         // Set output mode to handle virtual terminal sequences
         Function GetStdHandleFunc = Function.getFunction("kernel32", "GetStdHandle");
         WinDef.DWORD STD_OUTPUT_HANDLE = new WinDef.DWORD(-11);
